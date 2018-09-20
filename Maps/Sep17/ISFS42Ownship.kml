@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>ISFS42Ownship</name>
+    <Style id="icon-1899-DB4436-normal">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-DB4436-highlight">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-DB4436">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-DB4436-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-DB4436-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-FF5252-normal">
+      <IconStyle>
+        <color>ff5252ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-FF5252-highlight">
+      <IconStyle>
+        <color>ff5252ff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-FF5252">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-FF5252-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-FF5252-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-1899-FFEA00-normal">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-FFEA00-highlight">
+      <IconStyle>
+        <color>ff00eaff</color>
+        <scale>1</scale>
+        <Icon>
+          <href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-FFEA00">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-FFEA00-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-FFEA00-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>Row: 1</name>
+      <description><![CDATA[Row: 1<br>  <br> Number 1<br> Latitude 45.955427<br> Longitude -90.287663<br> PS_XCoord 710188.56756500000<br> PS_YCoord 5092672.50295000000<br> canopy height 26.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.287663,45.955427,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 2</name>
+      <description><![CDATA[Row: 2<br>  <br> Number 2<br> Latitude 45.922587<br> Longitude -90.263572<br> PS_XCoord 712180.75456000000<br> PS_YCoord 5089087.81141000000<br> canopy height 26.00000000000<br> landcover 250.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.263572,45.922587,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 3</name>
+      <description><![CDATA[Row: 3<br>  <br> Number 3<br> Latitude 45.951554<br> Longitude -90.223896<br> PS_XCoord 715145.01914100000<br> PS_YCoord 5092412.56019000000<br> canopy height 26.00000000000<br> landcover 150.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.223896,45.951554,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 4</name>
+      <description><![CDATA[Row: 4<br>  <br> Number 4<br> Latitude 45.954488<br> Longitude -90.291573<br> PS_XCoord 709889.14015300000<br> PS_YCoord 5092557.94944000000<br> canopy height 27.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.291573,45.954488,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 5</name>
+      <description><![CDATA[Row: 5<br>  <br> Number 5<br> Latitude 45.950511<br> Longitude -90.245046<br> PS_XCoord 713509.96278600000<br> PS_YCoord 5092239.75029000000<br> canopy height 27.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.245046,45.950511,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 6</name>
+      <description><![CDATA[Row: 6<br>  <br> Number 6<br> Latitude 45.959418<br> Longitude -90.285978<br> PS_XCoord 710304.07032500000<br> PS_YCoord 5093120.40485000000<br> canopy height 22.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.285978,45.959418,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 7</name>
+      <description><![CDATA[Row: 7<br>  <br> Number 7<br> Latitude 45.967151<br> Longitude -90.313306<br> PS_XCoord 708157.50490100000<br> PS_YCoord 5093907.81028000000<br> canopy height 22.00000000000<br> landcover 4.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.313306,45.967151,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 8</name>
+      <description><![CDATA[Row: 8<br>  <br> Number 8<br> Latitude 45.917694<br> Longitude -90.227995<br> PS_XCoord 714958.20542100000<br> PS_YCoord 5088639.56964000000<br> canopy height 22.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.227995,45.917694,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 9</name>
+      <description><![CDATA[Row: 9<br>  <br> Number 9<br> Latitude 45.928899<br> Longitude -90.243132<br> PS_XCoord 713741.35809800000<br> PS_YCoord 5089843.72054000000<br> canopy height 30.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.243132,45.928899,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 10</name>
+      <description><![CDATA[Row: 10<br>  <br> Number 10<br> Latitude 45.970439<br> Longitude -90.321806<br> PS_XCoord 707486.72884400000<br> PS_YCoord 5094250.91471000000<br> canopy height 30.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.321806,45.970439,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 11</name>
+      <description><![CDATA[Row: 11<br>  <br> Number 11<br> Latitude 45.936893<br> Longitude -90.282239<br> PS_XCoord 710679.18912900000<br> PS_YCoord 5090627.66387000000<br> canopy height 21.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.282239,45.936893,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 12</name>
+      <description><![CDATA[Row: 12<br>  <br> Number 12<br> Latitude 45.951305<br> Longitude -90.312539<br> PS_XCoord 708276.32826600000<br> PS_YCoord 5092149.25608000000<br> canopy height 21.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.312539,45.951305,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 13</name>
+      <description><![CDATA[Row: 13<br>  <br> Number 13<br> Latitude 45.973994<br> Longitude -90.252621<br> PS_XCoord 712832.89912300000<br> PS_YCoord 5094828.43129000000<br> canopy height 29.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.252621,45.973994,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 14</name>
+      <description><![CDATA[Row: 14<br>  <br> Number 14<br> Latitude 45.951443<br> Longitude -90.218223<br> PS_XCoord 715585.07585000000<br> PS_YCoord 5092415.48249000000<br> canopy height 28.00000000000<br> landcover 3.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.218223,45.951443,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 15</name>
+      <description><![CDATA[Row: 15<br>  <br> Number 15<br> Latitude 45.973872<br> Longitude -90.322254<br> PS_XCoord 707439.13726800000<br> PS_YCoord 5094631.17337000000<br> canopy height 28.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.322254,45.973872,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 16</name>
+      <description><![CDATA[Row: 16<br>  <br> Number 16<br> Latitude 45.926297<br> Longitude -90.305407<br> PS_XCoord 708923.06250000000<br> PS_YCoord 5089389.45115000000<br> canopy height 28.00000000000<br> landcover 3.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.305407,45.926297,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 17</name>
+      <description><![CDATA[Row: 17<br>  <br> Number 17<br> Latitude 45.939753<br> Longitude -90.210452<br> PS_XCoord 716232.74983200000<br> PS_YCoord 5091137.82138000000<br> canopy height 31.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.210452,45.939753,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 18</name>
+      <description><![CDATA[Row: 18<br>  <br> Number 18<br> Latitude 45.920785<br> Longitude -90.329017<br> PS_XCoord 707112.99421600000<br> PS_YCoord 5088715.42643000000<br> canopy height 25.00000000000<br> landcover 3.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.329017,45.920785,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 19</name>
+      <description><![CDATA[Row: 19<br>  <br> Number 19<br> Latitude 45.97041<br> Longitude -90.272654<br> PS_XCoord 711294.65413900000<br> PS_YCoord 5094376.95654000000<br> canopy height 25.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.272654,45.97041,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 20</name>
+      <description><![CDATA[Row: 20<br>  <br> Number 20<br> Latitude 45.965025<br> Longitude -90.234945<br> PS_XCoord 714236.73808100000<br> PS_YCoord 5093879.36285000000<br> canopy height 25.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.234945,45.965025,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 21</name>
+      <description><![CDATA[Row: 21<br>  <br> Number 21<br> Latitude 45.963971<br> Longitude -90.223083<br> PS_XCoord 715159.92986000000<br> PS_YCoord 5093794.25363000000<br> canopy height 34.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.223083,45.963971,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 22</name>
+      <description><![CDATA[Row: 22<br>  <br> Number 22<br> Latitude 45.962385<br> Longitude -90.217487<br> PS_XCoord 715599.60759300000<br> PS_YCoord 5093633.20028000000<br> canopy height 36.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.217487,45.962385,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 23</name>
+      <description><![CDATA[Row: 23<br>  <br> Number 23<br> Latitude 45.921109<br> Longitude -90.272531<br> PS_XCoord 711491.72883400000<br> PS_YCoord 5088899.76109000000<br> canopy height 24.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.272531,45.921109,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 24</name>
+      <description><![CDATA[Row: 24<br>  <br> Number 24<br> Latitude 45.92152<br> Longitude -90.329395<br> PS_XCoord 707081.00316100000<br> PS_YCoord 5088796.10437000000<br> canopy height 23.00000000000<br> landcover 3.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.329395,45.92152,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 25</name>
+      <description><![CDATA[Row: 25<br>  <br> Number 25<br> Latitude 45.974162<br> Longitude -90.299018<br> PS_XCoord 709238.05068700000<br> PS_YCoord 5094724.10292000000<br> canopy height 23.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.299018,45.974162,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 26</name>
+      <description><![CDATA[Row: 26<br>  <br> Number 26<br> Latitude 45.934424<br> Longitude -90.280163<br> PS_XCoord 710849.45010500000<br> PS_YCoord 5090358.86036000000<br> canopy height 23.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.280163,45.934424,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 27</name>
+      <description><![CDATA[Row: 27<br>  <br> Number 27<br> Latitude 45.934475<br> Longitude -90.212608<br> PS_XCoord 716086.18408400000<br> PS_YCoord 5090545.60525000000<br> canopy height 32.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.212608,45.934475,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 28</name>
+      <description><![CDATA[Row: 28<br>  <br> Number 28<br> Latitude 45.93953<br> Longitude -90.318709<br> PS_XCoord 707842.20716700000<br> PS_YCoord 5090824.88693000000<br> canopy height 17.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.318709,45.93953,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 29</name>
+      <description><![CDATA[Row: 29<br>  <br> Number 29<br> Latitude 45.955605<br> Longitude -90.23085<br> PS_XCoord 714590.38999600000<br> PS_YCoord 5092843.83839000000<br> canopy height 33.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.23085,45.955605,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 30</name>
+      <description><![CDATA[Row: 30<br>  <br> Number 30<br> Latitude 45.921254<br> Longitude -90.283341<br> PS_XCoord 710652.97181800000<br> PS_YCoord 5088887.30811000000<br> canopy height 20.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.283341,45.921254,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 31</name>
+      <description><![CDATA[Row: 31<br>  <br> Number 31<br> Latitude 45.962592<br> Longitude -90.266221<br> PS_XCoord 711822.81073700000<br> PS_YCoord 5093525.36182000000<br> canopy height 19.00000000000<br> landcover 4.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.266221,45.962592,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 32</name>
+      <description><![CDATA[Row: 32<br>  <br> Number 32<br> Latitude 45.951503<br> Longitude -90.32442<br> PS_XCoord 707354.89532000000<br> PS_YCoord 5092140.22304000000<br> canopy height 19.00000000000<br> landcover 250.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.32442,45.951503,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 33</name>
+      <description><![CDATA[Row: 33<br>  <br> Number 33<br> Latitude 45.950694<br> Longitude -90.313774<br> PS_XCoord 708182.94048100000<br> PS_YCoord 5092078.15983000000<br> canopy height 18.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.313774,45.950694,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 34</name>
+      <description><![CDATA[Row: 34<br>  <br> Number 34<br> Latitude 45.925513<br> Longitude -90.290259<br> PS_XCoord 710100.49157200000<br> PS_YCoord 5089342.21612000000<br> canopy height 18.00000000000<br> landcover 3.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.290259,45.925513,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 35</name>
+      <description><![CDATA[Row: 35<br>  <br> Number 35<br> Latitude 45.924618<br> Longitude -90.218202<br> PS_XCoord 715690.76802200000<br> PS_YCoord 5089435.30330000000<br> canopy height 38.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.218202,45.924618,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 36</name>
+      <description><![CDATA[Row: 36<br>  <br> Number 36<br> Latitude 45.939374<br> Longitude -90.290783<br> PS_XCoord 710007.43669600000<br> PS_YCoord 5090880.76498000000<br> canopy height 16.00000000000<br> landcover 240.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.290783,45.939374,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 37</name>
+      <description><![CDATA[Row: 37<br>  <br> Number 37<br> Latitude 45.920736<br> Longitude -90.287225<br> PS_XCoord 710353.77397100000<br> PS_YCoord 5088819.42929000000<br> canopy height 15.00000000000<br> landcover 4.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.287225,45.920736,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 38</name>
+      <description><![CDATA[Row: 38<br>  <br> Number 38<br> Latitude 45.924374<br> Longitude -90.313119<br> PS_XCoord 708332.29437100000<br> PS_YCoord 5089155.68267000000<br> canopy height 14.00000000000<br> landcover 4.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.313119,45.924374,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 39</name>
+      <description><![CDATA[Row: 39<br>  <br> Number 39<br> Latitude 45.978907<br> Longitude -90.274095<br> PS_XCoord 711150.72600000000<br> PS_YCoord 5095317.13000000000<br> canopy height -1.00000000000<br> landcover 4.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.274095,45.978907,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 40</name>
+      <description><![CDATA[Row: 40<br>  <br> Number 40<br> Latitude 45.905726<br> Longitude -90.276252<br> PS_XCoord 711261.59450000000<br> PS_YCoord 5087180.89300000000<br> canopy height -1.00000000000<br> landcover 4.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.276252,45.905726,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 41</name>
+      <description><![CDATA[Row: 41<br>  <br> Number 41<br> Latitude 45.904346<br> Longitude -90.293249<br> PS_XCoord 709948.53000000000<br> PS_YCoord 5086982.65600000000<br> canopy height -1.00000000000<br> landcover 3.00000000000<br> OWNERCLASS non-USFS]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.293249,45.904346,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Row: 42</name>
+      <description><![CDATA[Row: 42<br>  <br> Number 42<br> Latitude 45.973542<br> Longitude -90.228973<br> PS_XCoord 714666.54249700000<br> PS_YCoord 5094841.41729000000<br> canopy height 27.00000000000<br> landcover 3.00000000000<br> OWNERCLASS USDA FOREST SERVICE]]></description>
+      <styleUrl>#icon-1899-DB4436</styleUrl>
+      <Point>
+        <coordinates>
+          -90.228973,45.973542,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>WLEF</name>
+      <description><![CDATA[Row: 43<br> <br> Number WLEF<br> Latitude 45.9459<br> Longitude -90.2723<br> PS_XCoord <br> PS_YCoord <br> canopy height n/a<br> landcover <br> OWNERCLASS]]></description>
+      <styleUrl>#icon-1899-FF5252</styleUrl>
+      <Point>
+        <coordinates>
+          -90.2723,45.9459,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>MDS N Study</name>
+      <description><![CDATA[Row: 44<br> <br> Number MDS N Study<br> Latitude 45.951<br> Longitude -90.279<br> PS_XCoord <br> PS_YCoord <br> canopy height various<br> landcover Mixed (center of 600 x 600 m area)<br> OWNERCLASS]]></description>
+      <styleUrl>#icon-1899-FFEA00</styleUrl>
+      <Point>
+        <coordinates>
+          -90.279,45.951,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>MDS S Study</name>
+      <description><![CDATA[Row: 45<br> <br> Number MDS S Study<br> Latitude 45.936<br> Longitude -90.265<br> PS_XCoord <br> PS_YCoord <br> canopy height various<br> landcover Mixed (center of 600 x 600 m area)<br> OWNERCLASS]]></description>
+      <styleUrl>#icon-1899-FFEA00</styleUrl>
+      <Point>
+        <coordinates>
+          -90.265,45.936,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
