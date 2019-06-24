@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+   <Document>
+      <name>way_we</name>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>1</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.4101666666667,45.9903333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>2</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.0216666666667,45.9903333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>3</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.4101666666667,45.9723333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>4</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.0216666666667,45.9723333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>5</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.4101666666667,45.9543333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>6</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.0216666666667,45.9543333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>7</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.4101666666667,45.9363333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>8</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.0216666666667,45.9363333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>9</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.4101666666667,45.9183333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>10</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.0216666666667,45.9183333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>11</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.4101666666667,45.9003333333333,0</coordinates>
+         </Point>
+      </Placemark>
+      <Placemark>
+         <Snippet maxLines="0"> </Snippet>
+         <description> </description>
+         <name>12</name>
+         <Style>
+            <IconStyle>
+               <Icon>
+                  <href>http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png</href>
+               </Icon>
+               <scale>1</scale>
+            </IconStyle>
+         </Style>
+         <Point>
+            <coordinates>-90.0216666666667,45.9003333333333,0</coordinates>
+         </Point>
+      </Placemark>
+   </Document>
+</kml>
