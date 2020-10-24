@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="CH_Plots_selected" id="CH_Plots_selected">
+	<SimpleField name="Species" type="string"></SimpleField>
+	<SimpleField name="age" type="string"></SimpleField>
+	<SimpleField name="ID" type="float"></SimpleField>
+	<SimpleField name="flux_tower" type="string"></SimpleField>
+	<SimpleField name="buffer" type="string"></SimpleField>
+	<SimpleField name="comment" type="string"></SimpleField>
+	<SimpleField name="Dominant_Tree_Sp" type="string"></SimpleField>
+	<SimpleField name="Secondary_Tree_Sp" type="string"></SimpleField>
+	<SimpleField name="Tertiary_Tree_Sp" type="string"></SimpleField>
+	<SimpleField name="Age_characteristic" type="string"></SimpleField>
+	<SimpleField name="Notes" type="string"></SimpleField>
+	<SimpleField name="X" type="float"></SimpleField>
+	<SimpleField name="Y" type="float"></SimpleField>
+</Schema>
+<Folder><name>CH_Plots_selected</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">Mid</SimpleData>
+		<SimpleData name="ID">241</SimpleData>
+		<SimpleData name="flux_tower">8</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Spruce</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Fir</SimpleData>
+		<SimpleData name="X">-90.2285</SimpleData>
+		<SimpleData name="Y">45.91928</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2285,45.91928</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Alder</SimpleData>
+		<SimpleData name="ID">242</SimpleData>
+		<SimpleData name="flux_tower">8</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Speckled Alder</SimpleData>
+		<SimpleData name="Notes">Wet Site</SimpleData>
+		<SimpleData name="X">-90.2268</SimpleData>
+		<SimpleData name="Y">45.91939</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2268,45.91939</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">Young</SimpleData>
+		<SimpleData name="ID">247</SimpleData>
+		<SimpleData name="flux_tower">h</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Age_characteristic">Young</SimpleData>
+		<SimpleData name="X">-90.2476</SimpleData>
+		<SimpleData name="Y">45.92676</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2476,45.92676</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">mid</SimpleData>
+		<SimpleData name="ID">248</SimpleData>
+		<SimpleData name="flux_tower">h</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Age_characteristic">Young/Middle-aged</SimpleData>
+		<SimpleData name="X">-90.2474</SimpleData>
+		<SimpleData name="Y">45.92705</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2474,45.92705</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">very young</SimpleData>
+		<SimpleData name="ID">251</SimpleData>
+		<SimpleData name="flux_tower">i</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="comment">keep</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Age_characteristic">Young</SimpleData>
+		<SimpleData name="X">-90.2392</SimpleData>
+		<SimpleData name="Y">45.9377</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2392,45.9377</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">252</SimpleData>
+		<SimpleData name="buffer">edge</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Mixed</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.2392</SimpleData>
+		<SimpleData name="Y">45.9388</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2392,45.9388</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">271</SimpleData>
+		<SimpleData name="flux_tower">11</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.2821</SimpleData>
+		<SimpleData name="Y">45.93882</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2821,45.93882</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">aspen</SimpleData>
+		<SimpleData name="age">Young</SimpleData>
+		<SimpleData name="ID">281</SimpleData>
+		<SimpleData name="flux_tower">16w</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Age_characteristic">Young/Middle-aged</SimpleData>
+		<SimpleData name="X">-90.3094</SimpleData>
+		<SimpleData name="Y">45.91937</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3094,45.91937</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen/mixed</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">285</SimpleData>
+		<SimpleData name="flux_tower">e</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="X">-90.3431</SimpleData>
+		<SimpleData name="Y">45.91489</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3431,45.91489</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen/mixed</SimpleData>
+		<SimpleData name="age">mid-mature</SimpleData>
+		<SimpleData name="ID">284</SimpleData>
+		<SimpleData name="flux_tower">e</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Cherry</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Birch</SimpleData>
+		<SimpleData name="X">-90.3426</SimpleData>
+		<SimpleData name="Y">45.91463</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3426,45.91463</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Basswood</SimpleData>
+		<SimpleData name="ID">270</SimpleData>
+		<SimpleData name="flux_tower">11</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Basswood</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Fir</SimpleData>
+		<SimpleData name="X">-90.2821</SimpleData>
+		<SimpleData name="Y">45.93916</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2821,45.93916</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Basswood</SimpleData>
+		<SimpleData name="ID">274</SimpleData>
+		<SimpleData name="flux_tower">11</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="comment">east of the 11</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Basswood</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">aspen</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.2781</SimpleData>
+		<SimpleData name="Y">45.93912</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2781,45.93912</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Birch </SimpleData>
+		<SimpleData name="ID">280</SimpleData>
+		<SimpleData name="flux_tower">16w</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Birch</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Fir</SimpleData>
+		<SimpleData name="X">-90.3096</SimpleData>
+		<SimpleData name="Y">45.92073</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3096,45.92073</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Birch/maple</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">279</SimpleData>
+		<SimpleData name="flux_tower">16w</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Birch</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Fir</SimpleData>
+		<SimpleData name="X">-90.3106</SimpleData>
+		<SimpleData name="Y">45.92049</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3106,45.92049</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Black ash</SimpleData>
+		<SimpleData name="ID">25</SimpleData>
+		<SimpleData name="flux_tower">a</SimpleData>
+		<SimpleData name="comment">relocate to a buffer</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Black Ash</SimpleData>
+		<SimpleData name="X">-90.313727</SimpleData>
+		<SimpleData name="Y">45.96692</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.313727,45.96692</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Black spruce/tamarack</SimpleData>
+		<SimpleData name="ID">3</SimpleData>
+		<SimpleData name="flux_tower">k </SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Black Spruce</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Tamarack</SimpleData>
+		<SimpleData name="X">-90.240111</SimpleData>
+		<SimpleData name="Y">45.956107</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.240111,45.956107</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Grass</SimpleData>
+		<SimpleData name="flux_tower">ISS</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>0,0</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Hemlock</SimpleData>
+		<SimpleData name="ID">265</SimpleData>
+		<SimpleData name="flux_tower">23lake</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Hemlock</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Notes">Next to lake</SimpleData>
+		<SimpleData name="X">-90.2725</SimpleData>
+		<SimpleData name="Y">45.92297</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2725,45.92297</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Jackpine/hardwood mix</SimpleData>
+		<SimpleData name="ID">2</SimpleData>
+		<SimpleData name="flux_tower">k </SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Jack Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Red Maple</SimpleData>
+		<SimpleData name="Age_characteristic">Uneven</SimpleData>
+		<SimpleData name="X">-90.24069</SimpleData>
+		<SimpleData name="Y">45.955674</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.24069,45.955674</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Jackpine/hardwood mix</SimpleData>
+		<SimpleData name="ID">256</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Jack Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Mixed Hardwoods</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.2543</SimpleData>
+		<SimpleData name="Y">45.94444</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2543,45.94444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Maple/birch</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">7</SimpleData>
+		<SimpleData name="flux_tower">42w</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Birch</SimpleData>
+		<SimpleData name="X">-90.233096</SimpleData>
+		<SimpleData name="Y">45.975046</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.233096,45.975046</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">maple/elm</SimpleData>
+		<SimpleData name="ID">301</SimpleData>
+		<SimpleData name="flux_tower">l</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Elm</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.225642</SimpleData>
+		<SimpleData name="Y">45.962636</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.225642,45.962636</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Paper birch</SimpleData>
+		<SimpleData name="age">Young</SimpleData>
+		<SimpleData name="ID">282</SimpleData>
+		<SimpleData name="flux_tower">16w</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Paper birch</SimpleData>
+		<SimpleData name="Age_characteristic">Young</SimpleData>
+		<SimpleData name="X">-90.3086</SimpleData>
+		<SimpleData name="Y">45.91852</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3086,45.91852</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red oak/hardwood mix</SimpleData>
+		<SimpleData name="ID">326</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Oak</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Ash</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="X">-90.278734</SimpleData>
+		<SimpleData name="Y">45.954319</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.278734,45.954319</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine</SimpleData>
+		<SimpleData name="ID">240</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Mixed</SimpleData>
+		<SimpleData name="X">-90.2291</SimpleData>
+		<SimpleData name="Y">45.91981</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2291,45.91981</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine</SimpleData>
+		<SimpleData name="age">young</SimpleData>
+		<SimpleData name="ID">286</SimpleData>
+		<SimpleData name="flux_tower">e</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="comment">private land</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Pine</SimpleData>
+		<SimpleData name="Age_characteristic">Young/Middle-aged</SimpleData>
+		<SimpleData name="Notes">Private land</SimpleData>
+		<SimpleData name="X">-90.3408</SimpleData>
+		<SimpleData name="Y">45.90798</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3408,45.90798</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">26</SimpleData>
+		<SimpleData name="flux_tower">10</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="comment">relocate to south of the tower</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red pine</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.32237</SimpleData>
+		<SimpleData name="Y">45.972115</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.32237,45.972115</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine</SimpleData>
+		<SimpleData name="ID">293</SimpleData>
+		<SimpleData name="flux_tower">k </SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="comment">south of k</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Mixed</SimpleData>
+		<SimpleData name="Age_characteristic">Young</SimpleData>
+		<SimpleData name="X">-90.241072</SimpleData>
+		<SimpleData name="Y">45.953429</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.241072,45.953429</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine mixed</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">318</SimpleData>
+		<SimpleData name="flux_tower">25lake</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Cedar</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Mixed</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.300611</SimpleData>
+		<SimpleData name="Y">45.979075</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.300611,45.979075</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine, white pine mix</SimpleData>
+		<SimpleData name="ID">290</SimpleData>
+		<SimpleData name="flux_tower">28</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">White Pine</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Mixed</SimpleData>
+		<SimpleData name="X">-90.3184</SimpleData>
+		<SimpleData name="Y">45.94048</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3184,45.94048</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine/mix with maple</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">14</SimpleData>
+		<SimpleData name="flux_tower">19</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="comment">relocate to inside the buffer</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="X">-90.273836</SimpleData>
+		<SimpleData name="Y">45.973072</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.273836,45.973072</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Sugar maple</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">15</SimpleData>
+		<SimpleData name="flux_tower">19</SimpleData>
+		<SimpleData name="buffer">out</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Sugar Maple</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.275984</SimpleData>
+		<SimpleData name="Y">45.972958</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.275984,45.972958</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">white ash/maple</SimpleData>
+		<SimpleData name="ID">329</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">White Ash</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Basswood</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.257735</SimpleData>
+		<SimpleData name="Y">45.943973</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.257735,45.943973</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">White cedar</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">299</SimpleData>
+		<SimpleData name="flux_tower">l</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Cedar</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.228216</SimpleData>
+		<SimpleData name="Y">45.961723</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.228216,45.961723</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">white pine/cedar</SimpleData>
+		<SimpleData name="ID">9</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">White Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Mixed</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Cedar</SimpleData>
+		<SimpleData name="Age_characteristic">Uneven</SimpleData>
+		<SimpleData name="X">-90.237852</SimpleData>
+		<SimpleData name="Y">45.97469</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.237852,45.97469</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">white pine/maple</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">13</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">White Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Age_characteristic">Uneven</SimpleData>
+		<SimpleData name="X">-90.260316</SimpleData>
+		<SimpleData name="Y">45.979301</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.260316,45.979301</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Yellow birch</SimpleData>
+		<SimpleData name="ID">22</SimpleData>
+		<SimpleData name="flux_tower">25lake</SimpleData>
+		<SimpleData name="buffer">in</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Yellow Birch</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Balsam</SimpleData>
+		<SimpleData name="X">-90.300786</SimpleData>
+		<SimpleData name="Y">45.979317</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.300786,45.979317</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Paper birch/maple</SimpleData>
+		<SimpleData name="ID">277</SimpleData>
+		<SimpleData name="comment">thick understory</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Paper birch</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Sugar Maple</SimpleData>
+		<SimpleData name="Notes">Thick understory</SimpleData>
+		<SimpleData name="X">-90.3075</SimpleData>
+		<SimpleData name="Y">45.9249</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3075,45.9249</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Basswood</SimpleData>
+		<SimpleData name="ID">283</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Basswood</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Spruce</SimpleData>
+		<SimpleData name="Notes">Ash around</SimpleData>
+		<SimpleData name="X">-90.3292</SimpleData>
+		<SimpleData name="Y">45.92111</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.3292,45.92111</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">White cedar</SimpleData>
+		<SimpleData name="ID">259</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Cedar</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Hemlock</SimpleData>
+		<SimpleData name="Notes">Wet Site, Far from road</SimpleData>
+		<SimpleData name="X">-90.2677</SimpleData>
+		<SimpleData name="Y">45.93412</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2677,45.93412</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">254</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red Pine</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Maple</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">Basswood</SimpleData>
+		<SimpleData name="X">-90.2416</SimpleData>
+		<SimpleData name="Y">45.9444</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2416,45.9444</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Red pine</SimpleData>
+		<SimpleData name="age">mature</SimpleData>
+		<SimpleData name="ID">5</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Red pine</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.237467</SimpleData>
+		<SimpleData name="Y">45.958782</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.237467,45.958782</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">tamarack</SimpleData>
+		<SimpleData name="ID">16</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Tamarack</SimpleData>
+		<SimpleData name="Age_characteristic">Mature</SimpleData>
+		<SimpleData name="X">-90.284544</SimpleData>
+		<SimpleData name="Y">45.96939</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.284544,45.96939</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">tamarack</SimpleData>
+		<SimpleData name="age">mid</SimpleData>
+		<SimpleData name="ID">245</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Tamarack</SimpleData>
+		<SimpleData name="Secondary_Tree_Sp">Spruce</SimpleData>
+		<SimpleData name="Tertiary_Tree_Sp">White Pine</SimpleData>
+		<SimpleData name="Notes">Wet Site</SimpleData>
+		<SimpleData name="X">-90.2395</SimpleData>
+		<SimpleData name="Y">45.91888</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.2395,45.91888</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#CH_Plots_selected">
+		<SimpleData name="Species">Aspen</SimpleData>
+		<SimpleData name="age">young</SimpleData>
+		<SimpleData name="ID">18</SimpleData>
+		<SimpleData name="flux_tower">d</SimpleData>
+		<SimpleData name="comment">to the south of d</SimpleData>
+		<SimpleData name="Dominant_Tree_Sp">Aspen</SimpleData>
+		<SimpleData name="Age_characteristic">Young</SimpleData>
+		<SimpleData name="X">-90.292017</SimpleData>
+		<SimpleData name="Y">45.968468</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-90.292017,45.968468</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
