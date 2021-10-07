@@ -1,0 +1,178 @@
+ ################################################################################
+# This is a configuration file for PALM. It must be named: .palm.config.<suffix>
+# in order to use it, call palmbuild and palmrun with the option: -h <suffix>
+# Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/jobcontrol
+################################################################################
+#
+#-------------------------------------------------------------------------------
+# General compiler and host configuration section.
+# Variable declaration lines must start with a percent character
+# Internal variables can be used as {{VARIABLE_NAME}}. Please see documentation.
+#-------------------------------------------------------------------------------
+# working directory from where palmrun or palmbuild are called
+%base_directory      /glade/work/sreenath/palm/current_version
+
+# directory where PALM I/O is stored (used in .palm.iofiles)
+%base_data           /glade/work/sreenath/palm/current_version/JOBS
+
+# path to PALM's FORTRAN sources (installation folder)
+%source_path         /glade/work/sreenath/palm/current_version/palm_model_system/packages/palm/model/src
+
+# path to user interface routines
+%user_source_path    /glade/work/sreenath/palm/current_version/JOBS/$run_identifier/USER_CODE
+
+# path to temporary working directory. This folder contains the files
+# temporarily created by PALM during execution.
+# WARNING:
+# Large I/O files are generated during execution! It is recommended to direct
+# this path to a file system with fast discs (if available). This folder must
+# be accessible from all compute nodes, i.e. it must reside in a global file
+# system.
+%fast_io_catalog     /glade/scratch/sreenath/palm/current_version/tmp
+
+# directory where PALM restart files are stored. It is recommended to set this
+# path to the same file system as the temporary directory (fast_io_catalog) to
+# allow internal linking of the restart files instead of copying (increases
+# post-processing performance of palmrun).
+%restart_data_path   $fast_io_catalog
+
+# directory where PALM output files are stored (see also .palm.iofiles)
+%output_data_path    /glade/scratch/sreenath/palm/current_version/JOBS
+
+# folder for job protocols
+%local_jobcatalog    /glade/work/sreenath/palm/current_version/job_logfiles
+
+# folder for job protocols to be used on the remote host
+#%remote_jobcatalog   <path/to/directory>
+
+# local ip of your computer. Use 127.0.0.0 if you are running PALM
+# in interactive mode on your local computer
+%local_ip            127.0.0.1
+%local_hostname      $HOST
+
+# your local UNIX username
+%local_username      $USER
+
+# ip address of the remote host
+#%remote_ip           <ip>
+
+#%remote_hostname     <hostname>
+
+# name of login-node on the remote machine
+#%remote_loginnode    <loginnode>
+
+# username on the remote host
+#%remote_username     <username>
+
+# ssh-key to be used for ssh/scp calls to the remote host
+#%ssh_key             ~/.ssh/id_rsa
+
+# default queue to be used if palmrun-option -q is omitted
+%defaultqueue        regular
+
+# command to submit batch jobs
+%submit_command      /opt/pbs/bin/qsub
+
+# default project account to be used if palmrun-option -A is omitted. For this
+# setting to be active, the batch directive must also be activated (see BD and
+# BDT settings below).
+#%project_account     <project-account>
+#
+
+# compilername to generate MPI executables
+%compiler_name       mpif90
+#/glade/u/apps/ch/opt/mpt/2.23/bin/mpif90
+
+# compilername to generate non-MPI executables running on one core
+%compiler_name_ser   mpif90
+#/glade/u/apps/ch/opt/ncarcompilers/0.5.0/intel/18.0.5/mpi/mpif90
+
+# preprocessor directives to be used for compiling the PALM code
+%cpp_options         -cpp -D__intel_compiler -D__parallel -DMPI_REAL=MPI_DOUBLE_PRECISION -DMPI_2REAL=MPI_2DOUBLE_PRECISION -D__netcdf -D__fftw -D__rrtmg -D__netcdf4 -D__netcdf4_parallel
+
+# used for parallel compilation
+%make_options        -j 4
+
+# options to be used to compile PALM
+%compiler_options    -O3 -fp-model source -fno-alias -fpe0 -ftz -no-prec-div -fPIC -no-prec-sqrt -ip -nbs -diag-disable 8290,8291 -I/glade/u/apps/ch/opt/mpt/2.21/include -I/glade/u/apps/ch/opt/netcdf-mpi/4.7.3/mpt/2.21/intel/18.0.5/include -I/glade/u/apps/ch/opt/fftw-mpi/3.3.8/mpt/2.21/intel/18.0.5/include -I/glade/work/sreenath/palm/current_version/rrtmg/include
+
+# options to be used to link the PALM executable
+%linker_options      -O3 -fp-model source -fno-alias -fpe0 -ftz -no-prec-div -fPIC -no-prec-sqrt -ip -nbs -diag-disable 8290,8291 -L/glade/u/apps/ch/opt/mpt/2.21/lib -L/glade/u/apps/ch/opt/netcdf-mpi/4.7.3/mpt/2.21/intel/18.0.5/lib -L/glade/u/apps/ch/opt/fftw-mpi/3.3.8/mpt/2.21/intel/18.0.5/lib /glade/work/sreenath/palm/current_version/rrtmg/lib/librrtmg.so -lnetcdf -lnetcdff -lfftw3 -lsz -lhdf5_hl -lhdf5 -lm -lz
+
+# name of hostfile to be used (see online documentation for more details)
+%hostfile            auto
+
+# command to start the PALM executable
+%execute_command     mpiexec_mpt -n {{mpi_tasks}} ./palm
+
+#%execute_command_for_combine     mpiexec_mpt -n 1 ./combine_plot_fields.x
+
+# memory request per core
+%memory              2300
+
+# module commands to load required libraries
+%module_commands     module purge; module load ncarenv/1.3 intel/18.0.5 mpt/2.21 ncarcompilers/0.5.0 netcdf-mpi/4.7.3 fftw-mpi/3.3.8
+
+# special commands to be carried out at login and start of batch jobs on the remote host
+#%login_init_cmd      .execute_special_profile
+#
+#-------------------------------------------------------------------------------
+# Directives to be used for batch jobs
+# Lines must start with "BD:". If $-characters are required, hide them with \
+# Internal variables can be used as {{variable_name}}. Please see documentation.
+#-------------------------------------------------------------------------------
+BD:#!/bin/bash
+BD:#PBS -N {{job_id}}
+BD:#PBS -A UWIS0030
+BD:#PBS -l walltime={{cpu_hours}}:{{cpu_minutes}}:{{cpu_seconds}}
+BD:#PBS -l select={{nodes}}:ncpus={{tasks_per_node}}:mpiprocs={{tasks_per_node}}
+BD:#PBS -o {{job_protocol_file}}
+BD:#PBS -m abe
+BD:#PBS -M paleri@wisc.edu
+BD:#PBS -j oe
+BD:#PBS -q {{queue}}
+BD:source /etc/profile.d/modules.sh
+
+
+#
+#-------------------------------------------------------------------------------
+# Directives for batch jobs used to send back the jobfiles from a remote to a local host
+# Lines must start with "BDT:". If $-characters are required, excape them with triple backslash
+# Internal variables can be used as {{variable_name}}. Please see documentation.
+#-------------------------------------------------------------------------------
+BDT:#!/bin/bash
+#BDT:#PBS -A {{project_account}}
+BDT:#PBS -N job_protocol_transfer
+BDT:#PBS -l walltime=00:30:00
+BDT:#PBS -l nodes=1:ppn=1
+BDT:#PBS -o {{job_transfer_protocol_file}}
+BDT:#PBS -j oe
+BDT:#PBS -q dataq
+#
+#-------------------------------------------------------------------------------
+# INPUT-commands. These commands are executed before running PALM
+# Lines must start with "IC:"
+#-------------------------------------------------------------------------------
+IC:ulimit  -s unlimited
+IC:export MPI_TYPE_DEPTH=16
+IC:mkdir -p BINOUT
+IC:mkdir -p BINOUT_N02
+IC:mkdir -p BINOUT_N03
+#
+#-------------------------------------------------------------------------------
+# ERROR-commands. These commands are executed when PALM terminates abnormally
+# Lines must start with "EC:"
+#-------------------------------------------------------------------------------
+EC:[[ $locat = execution ]]  &&  cat  RUN_CONTROL
+#
+#-------------------------------------------------------------------------------
+# OUTPUT-commands. These commands are executed when PALM terminates normally
+# Lines must start with "OC:"
+#-------------------------------------------------------------------------------
+#
+# Combine 1D- and 3D-profile output (these files are not usable for plotting)
+OC:[[ -f LIST_PROFIL_1D     ]]  &&  cat  LIST_PROFIL_1D  >>  LIST_PROFILE
+OC:[[ -f LIST_PROFIL        ]]  &&  cat  LIST_PROFIL     >>  LIST_PROFILE
+#
+# Combine all particle information files
+OC:[[ -f PARTICLE_INFOS/_0000 ]]  &&  cat  PARTICLE_INFOS/* >> PARTICLE_INFO
