@@ -1,0 +1,239 @@
+!-------------------------------------------------------------------------------
+!-- INITIALIZATION PARAMETER NAMELIST
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/inipar
+!-------------------------------------------------------------------------------
+&initialization_parameters
+!
+!-- grid parameters
+!-------------------------------------------------------------------------------
+    nx                         = 539, ! Number of gridboxes in x-direction (nx+1)
+    ny                         = 575, ! Number of gridboxes in y-direction (ny+1)
+    nz                         = 180, ! Number of gridboxes in z-direction (nz)
+
+    dx                         = 90.0, ! Size of single gridbox in x-direction
+    dy                         = 90.0, ! Size of single gridbox in y-direction
+    dz                         = 12.0, ! Size of single gridbox in z-direction
+
+    dz_stretch_level             = 1800.0,                                      ! Height (in m) where stretching starts
+    dz_stretch_factor            = 1.08,                                        ! dz(k+1) = dz(k) * dz_stretch_factor
+    dz_max                       = 60.0,
+
+    dt                         = 0.6, !fix timestep 
+
+!   Add a sponge layer to prevent reflection of gravity waves at the top boundary
+    rayleigh_damping_factor = 0.1,
+    rayleigh_damping_height = 1800.0, ! will be adjusted dynamically in offline nesting
+
+    humidity                   = .TRUE.,
+    passive_scalar             = .TRUE.,
+
+!
+!-- initialization
+!-------------------------------------------------------------------------------
+    initializing_actions       = 'inifor', ! initial conditions
+
+
+    origin_date_time           = '2019-09-24 00:00:00 -5', !starting at midnight localtime, CDT,  and -5 from UTC
+    topography                 = 'read_from_file',
+
+
+
+!
+!-- boundary conditions
+!-------------------------------------------------------------------------------
+    bc_pt_b                    = 'dirichlet',                                    ! dirichlet required for lsm / neumann required for surface_heatflux
+    bc_uv_b                    = 'dirichlet',
+    bc_q_b                     = 'dirichlet',                                    ! dirichlet required for lsm / neumann required for surface_heatflux
+    bc_p_t                     = 'neumann',
+    bc_p_b                     = 'neumann',
+!
+
+!-- numerics
+!-------------------------------------------------------------------------------
+    psolver                    = 'multigrid',   !Using non-cyclic lateral boundary conditions requires the multigrid method 
+!                                                for solving the Poisson equation for the perturbation pressure.
+    cycle_mg  = 'w',
+    mg_cycles = 2,
+    mg_switch_to_pe0_level = -1,
+
+    turbulence_closure         = '1.5-order',
+    
+!-- PHYSICS -------------------------------------------------------------------
+
+!   Not employed for testing, but later please replace by appropriate values to bring surface temperature into equilibrium - MS
+!   Replaced with two day values taken from the HRRR data - SP
+    spinup_time         = 0, ! 172800. 2 days
+    spinup_pt_mean      = 292.83,  
+    spinup_pt_amplitude = 5.60,    
+    dt_spinup           = 5.0,
+    data_output_during_spinup = .F.,
+    
+
+/ ! end of initialization parameter namelist
+
+!------------------------------------------------------------------------------
+!-- LAND SURFACE MODEL PARAMETER NAMELIST
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/lsmpar
+!------------------------------------------------------------------------------
+&land_surface_parameters
+!
+!
+    aero_resist_kray           = .T.,
+    conserve_water_content     = .T.,
+    min_soil_resistance        = 50.0,
+
+!    soil_type                  = 3,
+!    dz_soil                    =  0.001,  0.009,   0.01,   0.02,   0.04,   0.06,   0.13,   0.26,   0.54,   1.86, !set up like so in dynamic file 
+    soil_moisture              =   0.1859, 0.1888, 0.1928, 0.1962 , 0.2026, 0.2067, 0.2051, 0.1666 ! from HRRR data
+    soil_temperature           =   288.83, 289.60, 290.33, 290.79,289.66, 288.19, 286.74, 279.07,   ! from HRRR data
+    deep_soil_temperature      = 288.11,
+
+    surface_type               = 'netcdf',
+    constant_roughness         = .T.,
+!
+! end of land surface model parameter namelist
+/                                                                               
+
+!------------------------------------------------------------------------------
+!-- RADIATION MODEL PARAMETER NAMELIST
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/radpar
+!------------------------------------------------------------------------------
+&radiation_parameters
+    dt_radiation               = 60.0,
+    radiation_scheme           = 'external',
+    radiation_interactions_on  = .T.,                                           !  interaction of radiation inside the canopy, i.e. grass
+    rad_angular_discretization = .T.,
+    raytrace_discrete_azims    = 10,
+    raytrace_discrete_elevs    = 10,
+
+    surface_reflections = .T.,
+
+    nrefsteps = 2,
+!
+/                                                                               ! end of radiation model parameter namelist
+
+!------------------------------------------------------------------------------
+!-- PLANT CANOPY MODEL PARAMETER NAMELIST
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/plant_canopy_parameters
+!------------------------------------------------------------------------------
+&plant_canopy_parameters
+    canopy_mode                 = 'read_from_file',      
+    canopy_drag_coeff           = 0.15,
+    plant_canopy_transpiration  = .T.,
+/
+
+
+!-------------------------------------------------------------------------------
+!-- RUNTIME PARAMETER NAMELIST
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/d3par
+!-------------------------------------------------------------------------------
+&runtime_parameters
+!
+!-- run steering
+!-------------------------------------------------------------------------------
+    end_time                   = 3600.0, ! 1800.0, ! simulation time of the 3D model , 2.0h, 0.5 h for SVF calc.
+
+    create_disturbances        = .TRUE., ! randomly perturbate horiz. velocity
+    dt_disturb                 = 150.0,  ! interval for random perturbations
+    disturbance_energy_limit   = 0.01,   ! upper limit for perturbation energy
+
+    data_output_2d_on_each_pe  = .TRUE., ! do 2D output on each MPI rank
+    
+    npex = 18,
+    npey = 16,
+    debug_output                 = .T.,
+
+!
+!-- data output
+!-------------------------------------------------------------------------------
+    netcdf_data_format         = 5,
+
+    dt_run_control             = 0.0,    ! output interval for run control
+    dt_data_output             = 600.0,  ! output interval for general data
+    dt_data_output_av          = 600.0, ! output interval for averaged data
+    dt_dopr                    = 600.0,  ! output interval for profile data
+
+!
+!-- In case you want to calculate TKE or fluxes from 3D output averaging_input need to be every timestep
+    averaging_interval         = 600.0,  ! averaging interval general data change this for longer/final runs**
+    dt_averaging_input         = 0.001,  ! averaging general data sampling rate
+
+    averaging_interval_pr      = 600.0, ! averaging interval profile data
+    dt_averaging_input_pr      = 5.0,   ! averaging profile data sampling rate
+
+    do3d_at_begin      = .T., 
+    do2d_at_begin      = .T.,
+
+!---- output data variables
+!----not writing out any cross section data because we have 3D data          
+
+    data_output                = 'u', 'v', 'w','e',               !----3D data of instantaneous velocities and SGS TKE  
+                                 'u_av', 'v_av', 'w_av','e_av',   !----3D data of averaged velocities
+                                 'uu_av', 'vv_av', 'ww_av',   !---only writing out avg values for TKE calculations   
+                                 'uv_av','uw_av', 'vw_av',    !---only writing out avg values for TKE calculations   
+                                 'theta', 'q','s',            !----3D data of instantaneous scalars
+                                 'theta_av', 'q_av','s_av',   !----3D data of avg scalars
+                                 'wtheta_av','wq_av','ws_av', !---only writing out av values for EC flux calculations
+                                 'shf*_xy', 'qsws*_xy', 'ghf*_xy', 'rad_net*_xy','ssws*_xy',   !---surface cross sections
+                                 'shf*_xy_av', 'qsws*_xy_av', 'ghf*_xy_av', 'rad_net*_xy_av','ssws*_xy_av',   !---surface cross sections
+                                 'us*_xy', 'ol*_xy','t*_xy', !---surface cross sections
+                                 'us*_xy_av','t*_xy_av',     !---surface cross sections
+                                 'rad_lw_in*_xy', 'rad_lw_out*_xy', 'rad_sw_in*_xy', 'rad_sw_out*_xy',               !---surface cross sections
+                                 'rad_lw_in*_xy_av', 'rad_lw_out*_xy_av', 'rad_sw_in*_xy_av', 'rad_sw_out*_xy_av',   !---surface cross sections
+                                 'pcm_heatrate', 'pcm_heatrate_av',                   !---3D plant canopy  data
+                                 'pcm_transpirationrate', 'pcm_transpirationrate_av', !---3D plant canopy  data
+                                 'pcm_latentrate','pcm_latentrate_av', !---3D plant canopy  data
+                                 'm_soil', 't_soil',                   !---2D soils   data
+
+    data_output_pr             = 'wtheta', 'w"theta"', 'w*theta*',
+                                 'wq','w"q"','w*q*',
+                                 'ws','w"s"','w*s*',
+                                 'w', 'w*2',
+                                 'u', 'u*2',  'wu',  'w*u*',  'w"u"',
+                                 'v', 'v*2',  'wv',  'w*v*',  'w"v"',
+                                 '#theta','theta*2','#q','q*2','#s','s*2',
+                                 'w*p*:dz',
+
+
+    section_xy                 = 0, ! grid index for 2D XY cross sections
+
+
+
+ /
+
+!-------------------------------------------------------------------------------
+!-- Offline nesting parameters
+!   https://palm.muk.uni-hannover.de/trac/wiki/doc/app/nesting_offl_parameters
+!-------------------------------------------------------------------------------
+&nesting_offl_parameters
+
+/
+
+
+!-------------------------------------------------------------------------------
+!-- Synthetic Turbulence Generator Parameters
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/stg_par#use_syn_turb_gen
+!-------------------------------------------------------------------------------
+&stg_par
+   dt_stg_adjust    = 1800.0,
+   dt_stg_call      = 0.0,
+   compute_velocity_seeds_local = .F.,
+
+/ ! end of runtime parameter namelist
+
+!-------------------------------------------------------------------------------
+!-- NESTING PARAMETER NAMELIST
+!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/nestpar
+!-------------------------------------------------------------------------------
+&nesting_parameters
+
+   domain_layouts             = 'coarse',    1,  -1,  288,    0.0,    0.0,
+                                'medium',    2,   1,  630, 10710.0, 10890.0,
+                                'fine',      3,   2, 1250, 18180.0, 20070.0,
+
+   nesting_mode               = 'one-way',
+   nesting_datatransfer_mode  = 'mixed',
+!
+!
+/ ! end of nesting parameter namelist
+
