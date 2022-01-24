@@ -6,23 +6,14 @@
 !
 !-- grid parameters
 !-------------------------------------------------------------------------------
-    nx                         = 539, ! Number of gridboxes in x-direction (nx+1)
-    ny                         = 575, ! Number of gridboxes in y-direction (ny+1)
-    nz                         = 180, ! Number of gridboxes in z-direction (nz)
+    nx                         = 899, ! Number of gridboxes in x-direction (nx+1)
+    ny                         = 1007, ! Number of gridboxes in y-direction (ny+1)
+    nz                         = 148, ! Number of gridboxes in z-direction (nz)
 
-    dx                         = 90.0, ! Size of single gridbox in x-direction
-    dy                         = 90.0, ! Size of single gridbox in y-direction
+    dx                         = 30.0, ! Size of single gridbox in x-direction
+    dy                         = 30.0, ! Size of single gridbox in y-direction
     dz                         = 12.0, ! Size of single gridbox in z-direction
 
-    dz_stretch_level             = 1800.0,                                      ! Height (in m) where stretching starts
-    dz_stretch_factor            = 1.08,                                        ! dz(k+1) = dz(k) * dz_stretch_factor
-    dz_max                       = 60.0,
-
-    dt                         = 0.6, !fix timestep 
-
-!   Add a sponge layer to prevent reflection of gravity waves at the top boundary
-    rayleigh_damping_factor = 0.1,
-    rayleigh_damping_height = 1800.0, ! will be adjusted dynamically in offline nesting
 
     humidity                   = .TRUE.,
     passive_scalar             = .TRUE.,
@@ -30,7 +21,7 @@
 !
 !-- initialization
 !-------------------------------------------------------------------------------
-    initializing_actions       = 'inifor', ! initial conditions
+    initializing_actions       = 'interpolate_from_parent', ! initial conditions
 
 
     origin_date_time           = '2019-09-24 00:00:00 -5', !starting at midnight localtime, CDT,  and -5 from UTC
@@ -59,10 +50,8 @@
     turbulence_closure         = '1.5-order',
     
 !-- PHYSICS -------------------------------------------------------------------
-
-!   Not employed for testing, but later please replace by appropriate values to bring surface temperature into equilibrium - MS
-!   Replaced with two day values taken from the HRRR data - SP
-    spinup_time         = 0, ! 172800. 2 days
+!   Two day values taken from the HRRR meso scale model data - SP
+    spinup_time         = 158400, ! 44 hours
     spinup_pt_mean      = 292.83,  
     spinup_pt_amplitude = 5.60,    
     dt_spinup           = 5.0,
@@ -83,7 +72,7 @@
     min_soil_resistance        = 50.0,
 
 !    soil_type                  = 3,
-!    dz_soil                    =  0.001,  0.009,   0.01,   0.02,   0.04,   0.06,   0.13,   0.26,   0.54,   1.86, !set up like so in dynamic file 
+!    dz_soil                    =  0.001,  0.009,   0.01,   0.02,   0.04,   0.06,   0.13,   0.26,   0.54,   1.86, 
     soil_moisture              =   0.1859, 0.1888, 0.1928, 0.1962 , 0.2026, 0.2067, 0.2051, 0.1666 ! from HRRR data
     soil_temperature           =   288.83, 289.60, 290.33, 290.79,289.66, 288.19, 286.74, 279.07,   ! from HRRR data
     deep_soil_temperature      = 288.11,
@@ -91,8 +80,8 @@
     surface_type               = 'netcdf',
     constant_roughness         = .T.,
 !
-! end of land surface model parameter namelist
-/                                                                               
+!
+/                                                                               ! end of land surface model parameter namelist
 
 !------------------------------------------------------------------------------
 !-- RADIATION MODEL PARAMETER NAMELIST
@@ -131,7 +120,9 @@
 !
 !-- run steering
 !-------------------------------------------------------------------------------
-    end_time                   = 3600.0, ! 1800.0, ! simulation time of the 3D model , 2.0h, 0.5 h for SVF calc.
+    end_time                   = 158400, ! simulation time of the 3D model , 44.0h,
+    dt_max                     = 0.6, !max timestep 
+    restart_time               = 0.1, 
 
     create_disturbances        = .TRUE., ! randomly perturbate horiz. velocity
     dt_disturb                 = 150.0,  ! interval for random perturbations
@@ -139,31 +130,31 @@
 
     data_output_2d_on_each_pe  = .TRUE., ! do 2D output on each MPI rank
     
-    npex = 18,
-    npey = 16,
+    npex = 30,
+    npey = 21,
     debug_output                 = .T.,
 
 !
 !-- data output
 !-------------------------------------------------------------------------------
-    netcdf_data_format         = 5,
+    netcdf_data_format         = 4,
 
     dt_run_control             = 0.0,    ! output interval for run control
-    dt_data_output             = 600.0,  ! output interval for general data
-    dt_data_output_av          = 600.0, ! output interval for averaged data
-    dt_dopr                    = 600.0,  ! output interval for profile data
+    dt_data_output             = 900.0,  ! output interval for general data, setting 15 mins
+    dt_data_output_av          = 1800.0, ! output interval for averaged data, setting 30 mins
+    dt_dopr                    = 900.0,  ! output interval for profile data, 10 mins
 
 !
 !-- In case you want to calculate TKE or fluxes from 3D output averaging_input need to be every timestep
-    averaging_interval         = 600.0,  ! averaging interval general data change this for longer/final runs**
+    averaging_interval         = 1800.0,  ! averaging interval general data change this for longer/final runs**
     dt_averaging_input         = 0.001,  ! averaging general data sampling rate
 
-    averaging_interval_pr      = 600.0, ! averaging interval profile data
+    averaging_interval_pr      = 900.0, ! averaging interval profile data
     dt_averaging_input_pr      = 5.0,   ! averaging profile data sampling rate
+
 
     do3d_at_begin      = .T., 
     do2d_at_begin      = .T.,
-
 !---- output data variables
 !----not writing out any cross section data because we have 3D data          
 
@@ -174,66 +165,60 @@
                                  'theta', 'q','s',            !----3D data of instantaneous scalars
                                  'theta_av', 'q_av','s_av',   !----3D data of avg scalars
                                  'wtheta_av','wq_av','ws_av', !---only writing out av values for EC flux calculations
-                                 'shf*_xy', 'qsws*_xy', 'ghf*_xy', 'rad_net*_xy','ssws*_xy',   !---surface cross sections
                                  'shf*_xy_av', 'qsws*_xy_av', 'ghf*_xy_av', 'rad_net*_xy_av','ssws*_xy_av',   !---surface cross sections
-                                 'us*_xy', 'ol*_xy','t*_xy', !---surface cross sections
-                                 'us*_xy_av','t*_xy_av',     !---surface cross sections
-                                 'rad_lw_in*_xy', 'rad_lw_out*_xy', 'rad_sw_in*_xy', 'rad_sw_out*_xy',               !---surface cross sections
+                                 'us*_xy_av','ol*_xy_av','t*_xy_av','tsurf*_xy_av',     !---surface cross sections
                                  'rad_lw_in*_xy_av', 'rad_lw_out*_xy_av', 'rad_sw_in*_xy_av', 'rad_sw_out*_xy_av',   !---surface cross sections
                                  'pcm_heatrate', 'pcm_heatrate_av',                   !---3D plant canopy  data
                                  'pcm_transpirationrate', 'pcm_transpirationrate_av', !---3D plant canopy  data
                                  'pcm_latentrate','pcm_latentrate_av', !---3D plant canopy  data
                                  'm_soil', 't_soil',                   !---2D soils   data
+!                                 'lai*_xy_av', 'r_a*_xy_av', 'r_s*_xy_av',      !---2D plant   data
 
     data_output_pr             = 'wtheta', 'w"theta"', 'w*theta*',
                                  'wq','w"q"','w*q*',
                                  'ws','w"s"','w*s*',
                                  'w', 'w*2',
-                                 'u', 'u*2',  'wu',  'w*u*',  'w"u"',
-                                 'v', 'v*2',  'wv',  'w*v*',  'w"v"',
+                                 '#u', 'u*2',  'wu',  'w*u*',  'w"u"',
+                                 '#v', 'v*2',  'wv',  'w*v*',  'w"v"',
                                  '#theta','theta*2','#q','q*2','#s','s*2',
-                                 'w*p*:dz',
-
+                                 'w*p*:dz','rh','rho',
 
     section_xy                 = 0, ! grid index for 2D XY cross sections
 
 
+ / ! end of runtime parameter namelist
 
- /
+&virtual_flight_parameters
 
-!-------------------------------------------------------------------------------
-!-- Offline nesting parameters
-!   https://palm.muk.uni-hannover.de/trac/wiki/doc/app/nesting_offl_parameters
-!-------------------------------------------------------------------------------
-&nesting_offl_parameters
-
-/
+   flight_begin = 32400., ! 9hours to simulation start
+   leg_mode = 'return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return',    !RF17&RF18
+              'return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return','return',    !RF19&RF20
 
 
-!-------------------------------------------------------------------------------
-!-- Synthetic Turbulence Generator Parameters
-!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/stg_par#use_syn_turb_gen
-!-------------------------------------------------------------------------------
-&stg_par
-   dt_stg_adjust    = 1800.0,
-   dt_stg_call      = 0.0,
-   compute_velocity_seeds_local = .F.,
+   flight_level = 400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,
+                  400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,400.0, 100.0,
 
-/ ! end of runtime parameter namelist
 
-!-------------------------------------------------------------------------------
-!-- NESTING PARAMETER NAMELIST
-!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/nestpar
-!-------------------------------------------------------------------------------
-&nesting_parameters
+   rate_of_climb = 0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
+                   0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,
 
-   domain_layouts             = 'coarse',    1,  -1,  288,    0.0,    0.0,
-                                'medium',    2,   1,  630, 10710.0, 10890.0,
-                                'fine',      3,   2, 1250, 18180.0, 20070.0,
+   speed_agl =     82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,
+                   82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,82.31,
 
-   nesting_mode               = 'one-way',
-   nesting_datatransfer_mode  = 'mixed',
-!
-!
-/ ! end of nesting parameter namelist
+   x_start = 14850.,3180.,14970.,5160.,16470.,4920.,16830.,6930.,18450.,6810.,20100.,8250.,20190.,10320.,21960.,10260.,21720.,12030.,23700.,12510., !RF17&RF18 SE-NW
+             3390.,14610.,3450.,16620.,5100.,16230.,5100.,17880.,6810.,17880.,8340.,19800.,8520.,21750.,10230.,21810.,10230.,23490.,12000.,23520.,  !RF19&RF20 SW-NE
+
+
+   x_end  =  3180.,14850.,5160.,14970.,4920.,16470.,6930.,16830.,6810.,18450.,8250.,20100.,10320.,20190.,10260.,21960.,12030.,21720.,12510.,23700.,
+             14610.,3390.,16620.,3450.,16230.,5100.,17880.,5100.,17880.,6810.,19800.,8340.,21750.,8520.,21810.,10230.,23490.,10230.,23520.,12000.,
+
+
+   y_start = 1350.,23790.,1260.,24720.,2490.,24900.,2370.,25440.,3510.,25800.,4320.,27120.,4410.,27840.,5220.,27750.,5370.,28740.,6390.,28080.,
+             6420.,28500.,6180.,27840.,5820.,27420.,5460.,26550.,4530.,26400.,3210.,25620.,3570.,24840.,2700.,25140.,2370.,23790.,1350.,24090.,
+
+   y_end =   23790.,1350.,24720.,1260.,24900.,2490.,25440.,2370.,25800.,3510.,27120.,4320.,27840.,4410.,27750.,5220.,28740.,5370.,28080.,6390.,
+             28500.,6420.,27840.,6180.,27420.,5820.,26550.,5460.,26400.,4530.,25620.,3210.,24840.,3570.,25140.,2700.,23790.,2370.,24090.,1350.,
+
+
+/ ! end of virtual flight parameters
 

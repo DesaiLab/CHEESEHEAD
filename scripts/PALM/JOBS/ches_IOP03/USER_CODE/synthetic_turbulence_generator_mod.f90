@@ -72,6 +72,7 @@
                debug_output_timestep,                                                              &
                dt_3d,                                                                              &
                e_init,                                                                             &
+               ensemble_member_nr,                                                                 &
                humidity,                                                                           &
                initializing_actions,                                                               &
                intermediate_timestep_count,                                                        &
@@ -1082,6 +1083,7 @@
     NAMELIST /stg_par/  compute_velocity_seeds_local,                                              &
                         dt_stg_adjust,                                                             &
                         dt_stg_call,                                                               &
+                        ensemble_member_nr,                                                        &
                         switch_off_module
 
 
