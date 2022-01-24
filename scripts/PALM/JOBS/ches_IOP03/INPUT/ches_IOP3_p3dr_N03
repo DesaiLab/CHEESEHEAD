@@ -14,7 +14,6 @@
     dy                         = 6.0, ! Size of single gridbox in y-direction
     dz                         = 4.0, ! Size of single gridbox in z-direction
 
-    dt                         = 0.6, !fix timestep 
 
 
     humidity                   = .TRUE.,
@@ -23,7 +22,7 @@
 !
 !-- initialization
 !-------------------------------------------------------------------------------
-    initializing_actions       = 'set_constant_profiles', ! initial conditions
+    initializing_actions       = 'interpolate_from_parent', ! initial conditions
 
 
     origin_date_time           = '2019-09-24 00:00:00 -5', !starting at midnight localtime, CDT,  and -5 from UTC
@@ -54,7 +53,7 @@
 !-- PHYSICS -------------------------------------------------------------------
 
 !   Two day values taken from the HRRR data - SP
-    spinup_time         = 0, ! 17280.0 2 days
+    spinup_time         = 158400, ! 44 hours
     spinup_pt_mean      = 292.83,  !
     spinup_pt_amplitude = 5.60,    !
     dt_spinup           = 5.0,
@@ -125,7 +124,9 @@
 !
 !-- run steering
 !-------------------------------------------------------------------------------
-    end_time                   = 3600.0, ! 1800.0, ! simulation time of the 3D model , 2.0h, 0.5 h for SVF calc.
+    end_time                   = 158400.0, ! simulation time of the 3D model ,44.0 h 
+
+    dt_max                     = 0.6, !fix timestep 
 
     create_disturbances        = .TRUE., ! randomly perturbate horiz. velocity
     dt_disturb                 = 150.0,  ! interval for random perturbations
@@ -135,32 +136,42 @@
     
     npex = 25,
     npey = 50,
-    debug_output                 = .T.,
+    debug_output                 = .F.,
 
 !
 !-- data output
 !-------------------------------------------------------------------------------
-    netcdf_data_format         = 5,
+    netcdf_data_format         = 4,
 
     dt_run_control             = 0.0,    ! output interval for run control
-    dt_data_output             = 600.0,  ! output interval for general data, 10 mins
+    dt_data_output             = 1800.0,  ! output interval for general data, 30 mins
     dt_data_output_av          = 1800.0, ! output interval for averaged data,30 mins
-    dt_dopr                    = 600.0,  ! output interval for profile data, 10 mins
+    dt_dopr                    = 900.0,  ! output interval for profile data, 10 mins
 
 !
 !-- In case you want to calculate TKE or fluxes from 3D output averaging_input need to be every timestep
     averaging_interval         = 1800.0,  ! averaging interval general data change this for longer/final runs**
     dt_averaging_input         = 0.001,  ! averaging general data sampling rate
 
-    averaging_interval_pr      = 600.0, ! averaging interval profile data
+    averaging_interval_pr      = 900.0, ! averaging interval profile data
     dt_averaging_input_pr      = 1.0,   ! averaging profile data sampling rate
 
-!---removing 3D outputs for the fine domain for now and including cross section data
 
     do2d_at_begin      = .T.,
 
 
-     data_output        =        'm_soil', 't_soil',
+     data_output        =        'u', 'v', 'w','e',   !----3D data of instantaneous velocities and SGS TKE
+                                 'u_av', 'v_av', 'w_av','e_av',   !----3D data of averaged velocities and SGS TKE
+                                 'uu_av', 'vv_av', 'ww_av',   !---only writing out avg values for TKE calculations   
+                                 'uv_av','uw_av', 'vw_av',    !---only writing out avg values for TKE calculations   
+                                 'theta', 'q','s','rh',   !----3D data of inst. scalars
+                                 'theta_av', 'q_av','s_av','rh_av',   !----3D data of avg scalars
+                                 'wtheta_av','wq_av','ws_av', !---only writing out av values for EC flux calculations                                 
+                                 'm_soil', 't_soil',
+                                 'u_xy','u_xz','u_yz',
+                                 'u_xy_av','u_xz_av','u_yz_av',
+                                 'v_xy','v_xz','v_yz',
+                                 'v_xy_av','v_xz_av','v_yz_av',
                                  'w_xy','w_xz','w_yz',
                                  'w_xy_av','w_xz_av','w_yz_av',
                                  'theta_xy','theta_xy_av',
@@ -172,19 +183,15 @@
                                  's_xy','s_xy_av',
                                  's_xz','s_yz',
                                  's_xz_av','s_yz_av',
-                                 'shf*_xy', 'qsws*_xy', 'ghf*_xy', 'rad_net*_xy', !include surface scalar flux
-                                 'us*_xy','ol*_xy','t*_xy',
-                                 'us*_xy_av','t*_xy_av',
-                                 'rad_lw_in*_xy', 'rad_lw_out*_xy', 'rad_sw_in*_xy', 'rad_sw_out*_xy',
-                                 'uu_xy_av','vv_xy_av', 'ww_xy_av',
-                                 'uu_xz_av','vv_xz_av', 'ww_xz_av',
-                                 'uu_yz_av','vv_yz_av', 'ww_yz_av',
-                                 'uv_xy_av','uw_xy_av', 'vw_xy_av',
-                                 'uv_xz_av','uw_xz_av', 'vw_xz_av',
-                                 'uv_yz_av','uw_yz_av', 'vw_yz_av',
-                                 'wtheta_xy_av','wq_xy_av','ws_xy_av',
-                                 'wtheta_xz_av','wq_xz_av','ws_xz_av',
-                                 'wtheta_yz_av','wq_yz_av','ws_yz_av', 
+                                 'shf*_xy_av', 'qsws*_xy_av', 'ghf*_xy_av', 'rad_net*_xy_av','ssws*_xy_av', 
+                                 'us*_xy_av','ol*_xy_av','t*_xy_av','tsurf*_xy_av',
+                                 'rad_lw_in*_xy_av', 'rad_lw_out*_xy_av', 'rad_sw_in*_xy_av', 'rad_sw_out*_xy_av',
+                                 'pcm_heatrate', 'pcm_heatrate_av',                   !---3D plant canopy  data
+                                 'pcm_transpirationrate', 'pcm_transpirationrate_av', !---3D plant canopy  data
+                                 'pcm_latentrate','pcm_latentrate_av', !---3D plant canopy  data
+!                                 'lai*_xy_av', 'r_a*_xy_av', 'r_s*_xy_av',      !---2D plant   data
+
+
 
     data_output_pr             = 'wtheta', 'w"theta"', 'w*theta*',
                                  'wq','w"q"','w*q*',
@@ -199,17 +206,127 @@
     section_xz                 = 693,1030,1551,        ! grid index for 2D XZ cross sections, through towers USPFq, USPFa, USPFg
     section_yz                 = 555,1012,1348,        ! grid index for 2D XZ cross sections, through towers USPFc, USPFa, USPFq
 
+    nz_do3d                    = 26,
 
+    data_output_masks(1,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(2,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(3,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(4,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(5,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(6,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(7,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(8,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(9,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(10,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(11,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(12,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(13,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(14,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(15,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(16,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(17,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(18,:) = 'u','v','w','theta','q', !output data fields for masked data
+    data_output_masks(19,:) = 'u','v','w','theta','q', !output data fields for masked data
+
+    !US-PFa    
+    mask_x(1,:) = 6066.,6072.,6078.,
+    mask_y(1,:) = 6174.,6180.,6186.,
+    mask_z(1,:) = 28,32,36,96,100,104,196,200,204,
+
+    !US-PFb, tower height = 32m    
+    mask_x(2,:) = 2208.,2214.,2220.,
+    mask_y(2,:) = 9138.,9144.,9150.,
+    mask_z(2,:) = 28,32,36,
+
+    !US-PFc, tower height = 12m    
+    mask_x(3,:) = 3324.,3330.,3336.,
+    mask_y(3,:) = 8664.,8670.,8676.,
+    mask_z(3,:) = 8,12,16,20,24,
+
+    !US-PFd, tower height = 4m 
+    mask_x(4,:) = 3924.,3930.,3936.,
+    mask_y(4,:) = 8790.,8796.,8802.,
+    mask_z(4,:) = 8,12,16,20,24,
+
+    !US-PFe, tower height = 32m 
+    mask_x(5,:) = 3972.,3978.,3984.,
+    mask_y(5,:) = 9942.,9948.,9954.,
+    mask_z(5,:) = 28,32,36,
+
+    !US-PFg, tower height = 32m 
+    mask_x(6,:) = 6150.,6156.,6162.,
+    mask_y(6,:) = 9300.,9306.,9312.,
+    mask_z(6,:) = 28,32,36,
+
+    !US-PFh, tower height = 32m 
+    mask_x(7,:) = 8610.,8616.,8622.,
+    mask_y(7,:) = 7326.,7332.,7338.,
+    mask_z(7,:) = 28,32,36,
+
+    !US-PFi, tower height = 32m 
+    mask_x(8,:) = 9216.,9222.,9228.,
+    mask_y(8,:) = 9456.,9462.,9468.,
+    mask_z(8,:) = 28,32,36,
+
+    !US-PFj, tower height = 32m 
+    mask_x(9,:) = 9660.,9666.,9672.,
+    mask_y(9,:) = 8010.,8016.,8022.,
+    mask_z(9,:) = 28,32,36,
+
+    !US-PFk, tower height = 32m 
+    mask_x(10,:) = 714.,720.,726.,
+    mask_y(10,:) = 2790.,2796.,2802.,
+    mask_z(10,:) = 28,32,36,
+
+    !US-PFl, tower height = 25m 
+    mask_x(11,:) = 2634.,2640.,2646.,
+    mask_y(11,:) = 5676.,5682.,5688.,
+    mask_z(11,:) = 20,24,28,
+
+    !US-PFm, tower height = 32m 
+    mask_x(12,:) = 3240.,3246.,3252.,
+    mask_y(12,:) = 3432.,3438.,3444.,
+    mask_z(12,:) = 28,32,36,
+
+    !US-PFn, tower height = 32m 
+    mask_x(13,:) = 5382.,5388.,5394., 
+    mask_y(13,:) = 5490.,5496.,5502.,
+    mask_z(13,:) = 28,32,36,
+
+    !US-PFp, tower height = 32m 
+    mask_x(14,:) = 6792.,6798.,6804.,
+    mask_y(14,:) = 5190.,5196.,5202.,
+    mask_z(14,:) = 28,32,36,
+
+    !US-PFq, tower height = 32m 
+    mask_x(15,:) = 8082.,8088.,8094.,
+    mask_y(15,:) = 4152.,4158.,4164.,
+    mask_z(15,:) = 28,32,36,
+
+    !US-PFr, tower height = 4m 
+    mask_x(16,:) = 8088.,8094.,8100.,
+    mask_y(16,:) = 3852.,3858.,3864.,
+    mask_z(16,:) = 8,12,16,20,24,
+
+    !US-PFs, tower height = 12 m 
+    mask_x(17,:) = 8802.,8808.,8814.,
+    mask_y(17,:) = 5364.,5370.,5376.,
+    mask_z(17,:) = 8,12,16,20,24,
+
+    !US-PFt, tower height = 32 m 
+    mask_x(18,:) = 9528.,9534.,9540.,
+    mask_y(18,:) = 3324.,3330.,3336.,
+    mask_z(18,:) = 28,32,36,
+
+    mask_x_loop(19,:) = 6024.,6120,6., 
+    mask_y_loop(19,:) = 6132.,6228,6.,
+
+
+    dt_domask = 0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6,10.,
+
+!    skip_time_domask = 18000.,18000.,18000.,18000.,18000.,18000.,18000.,18000.,18000.,
+!		       18000.,18000.,18000.,18000.,18000.,18000.,18000.,18000.,18000.,18000.,  ! skipping the first 5 hours of the run
 
 / ! end of runtime parameter namelist
 
-!-------------------------------------------------------------------------------
-!-- VIRTUAL MEASUREMENTS PARAMETER NAMELIST
-!   Documentation: https://palm.muk.uni-hannover.de/trac/wiki/doc/app/virtual_measurement_parameters
-!-------------------------------------------------------------------------------
-&virtual_measurement_parameters
-
-   dt_virtual_measurement = 0.6,
-
-/ ! end of virtual parameters namelist
 
