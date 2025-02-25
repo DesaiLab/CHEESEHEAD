@@ -1,35 +1,41 @@
-#Run prior scripts####
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
+
+#set home and data directories if not already existing from Preprocess_goes_nldas.R
+if(!exists("homedir")){homedir<-"/Users/bethanyblakely/Desktop/Analysis/CHEESEHEAD_local/CHEESEHEAD/scripts/LST_R"}
+if(!exists("datadir")){datadir<-"/Users/bethanyblakely/Desktop/Analysis/LST/Data"}
+
+#Run prior scripts if needed####
+setwd(homedir)
 if(!exists("goes.filled")){
 source("Preprocess_goes_nldas_3.R")
 source("GoesGF.R")
 }
 
 #Get stuff you need to run this script####
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
+setwd(homedir)
 library(terra)
 library(lubridate)
 library(smoothr)
 library(spatialEco)
 
 
-#Set extents #####
+#Set extents. Already done in preprocess_goes_nldas but you can do it here again if you want#####
 
-#spatial
-und<-ext(-92,-88, 45, 47) #UNDERC
-big.wi<-ext(-93,-87, 43, 47); med.wi<-ext(-90,-89, 45, 46) #Wisconsin larger and smaller portion respectively
-swth<-vect("ancillary/stei_tree.kml"); swth.utm<-project(swth, "epsg:32616") #Steigerwalt/Treehaven from NEON IOP (?)
-swth2<-buffer(swth, 12000); swth2.utm<-buffer(swth.utm, 12000) #Steigerwalt/Treehaven with an additional 12km buffer
-
-wi<-swth2.utm #assign the one you'll use
-
-#temporal
-timespan<-c(166:274) #DOYs to do all this for; must have data for these obviously
+# #spatial
+# und<-ext(-92,-88, 45, 47) #UNDERC
+# big.wi<-ext(-93,-87, 43, 47); med.wi<-ext(-90,-89, 45, 46) #Wisconsin larger and smaller portion respectively
+# swth<-vect("ancillary/stei_tree.kml"); swth.utm<-project(swth, "epsg:32616") #Steigerwalt/Treehaven from NEON IOP
+# swth2<-buffer(swth, 12000); swth2.utm<-buffer(swth.utm, 12000) #Steigerwalt/Treehaven with an additional 12km buffer
+# 
+# wi<-swth2.utm #assign the one you'll use
+# 
+# #temporal
+# timespan<-c(166:274) #DOYs to do all this for; must have data for these obviously
 
 
 
 #Get ecostress QC Lookup table####
-setwd("/Users/bethanyblakely/Desktop/Analysis/Archive/Geospatial/lut")
+setwd(datadir)
+setwd("lut")
 
 qc.lut<-read.csv("ECO2LSTE-001-SDS-QC-lookup.csv")
 vals.qc<-qc.lut$Value[qc.lut$Mandatory.QA.flag%in%c("Pixel produced, best quality")]#,"Pixel produced, nominal quality", "Pixel produced, but cloud detected")]
@@ -42,24 +48,24 @@ vals.cld<-cld.lut$Value[cld.lut$Final.Cloud..either.one.of.bits.2..3..or.4.set =
 
 #Get ecostress LST and QC files listed and temporally aligned####
 
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-setwd("Data/ecostress/lst")
+setwd(datadir)
+setwd("ecostress/lst")
 
 files.ecs.all<-list.files()
 rdate.lst<-as.POSIXlt(substr(files.ecs.all, 25,37), format="%Y%j%H%M%S", tz="UTC"); rdoy<-as.numeric(format(rdate.lst, "%j"))
 files.sub<-which(rdoy%in%timespan)
 files.ecs<-files.ecs.all[files.sub]
 
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-setwd("Data/ecostress/qc")
+setwd(datadir)
+setwd("ecostress/qc")
 
 files.qc.all<-list.files()
 rdate.qc<-as.POSIXlt(substr(files.qc.all, 24,36), format="%Y%j%H%M%S", tz="UTC"); rdoy<-as.numeric(format(rdate.qc, "%j"))
 files.sub<-which(rdoy%in%timespan)
 files.qc<-files.qc.all[files.sub]
 
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-setwd("Data/ecostress/cld")
+setwd(datadir)
+setwd("ecostress/cld")
 
 files.cld.all<-list.files()
 rdate.cld<-as.POSIXlt(substr(files.cld.all, 30,42), format="%Y%j%H%M%S", tz="UTC"); rdoy<-as.numeric(format(rdate.cld, "%j"))
@@ -84,28 +90,28 @@ length(files.cld)==length(files.ecs) #time alignment check. should both eval to 
 
 #Read in ecostress and QC it, and align it to the GOES grid, also retaining an ecostress-gridded one for later####
 
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
+setwd(homedir)
 
 allrast.ecs<-list(); allrast.fullres<-list()
 for (i in 1:length(files.ecs)){
   
-  setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-  setwd("Data/ecostress/lst")
+  setwd(datadir)
+  setwd("ecostress/lst")
   erst<-terra::rast(files.ecs[i])
   
   ts<-substr(files.ecs[i], 25, 37)
   
-  setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-  setwd("Data/ecostress/qc")
+  setwd(datadir)
+  setwd("ecostress/qc")
   qc.match<-which(substr(files.qc, 24, 36)==ts)
   qc<-terra::rast(files.qc[qc.match])
   
-  setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-  setwd("Data/ecostress/cld")
+  setwd(datadir)
+  setwd("ecostress/cld")
   cld.match<-which(substr(files.qc, 24, 36)==ts)
   cld<-terra::rast(files.cld[cld.match])
   
-  setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
+  setwd(homedir)
   
   #this one for regressions - good data only
   elst<-erst

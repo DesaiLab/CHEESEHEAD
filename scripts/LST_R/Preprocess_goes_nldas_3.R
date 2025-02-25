@@ -203,9 +203,9 @@ nldas.sd<-stdev(brick.vic, brick.mosaic, brick.noah)
   #apply function fixing unsigned integer problem
   glst.wi<-cv(glst.wi)
   
-  #NaN pixels with QC != best quality (leaves only cloud-free pixels) or values below 280K (~7C)
+  #NaN pixels with QC != best quality (leaves only cloud-free pixels)
   glst.wi[gqc.wi!=0]<-NA
-  glst.wi[glst.wi<280]<-NA
+
   
   #extract and assign time dimension
   filetime<-substr(files.goes[i], 24, 37)

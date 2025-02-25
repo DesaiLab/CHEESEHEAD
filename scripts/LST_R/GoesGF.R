@@ -1,25 +1,27 @@
 #Gapfilling regressions for GOES/NLDAS
 
-setwd("/Users/bethanyblakely/Desktop/Analysis/LST")
-#library(zoo)
+#set home and data directories if not already existing from Preprocess_goes_nldas.R
+if(!exists("homedir")){homedir<-"/Users/bethanyblakely/Desktop/Analysis/CHEESEHEAD_local/CHEESEHEAD/scripts/LST_R"}
+if(!exists("datadir")){datadir<-"/Users/bethanyblakely/Desktop/Analysis/LST/Data"}
 
 
-if(!exists("goesdat")){goesdat<-terra::rast("GOES_July_2019.tif")}
-if(!exists("nldasdat")){nldasdat<-terra::rast("NLDAS_July_2019.tif")}
+setwd("homedir")
 
-goesdat.bk<-goesdat
+goesdat.bk<-goesdat #make a backup of ungapfilled goes data; mostly for development purposes
 
+#NaN LSTs out of reasonable range
 goesdat[goesdat>310|goesdat<273]<-NA
 
 
-#an example plot
-nts<-as.numeric(unname(nldasdat[10,10,]))
-gts<-as.numeric(unname(goesdat[10,10,]))
-timex<-as.numeric(format(time(nldasdat), "%j"))+(as.numeric(format(time(nldasdat), "%H"))/24)
-timex2<-as.numeric(format(time(goesdat), "%j"))+(as.numeric(format(time(goesdat), "%H"))/24)
-
-plot(nts~timex, type="l", ylab="LST", xlab="DOY");lines(gts~timex2, col='red')
-legend(205, 308, legend=c("GOES", "NLDAS"), pch=c("o", "---"), col=c("red", "black"), bty="n")
+# #an example timeseries plot
+# nts<-as.numeric(unname(nldasdat[10,10,]))
+# gts<-as.numeric(unname(goesdat[10,10,]))
+# timex<-as.numeric(format(time(nldasdat), "%j"))+(as.numeric(format(time(nldasdat), "%H"))/24)
+# timex2<-as.numeric(format(time(goesdat), "%j"))+(as.numeric(format(time(goesdat), "%H"))/24)
+# 
+# par(mfrow=c(1,1))
+# plot(nts~timex, ylab="LST", type="l", xlab="DOY"); points(gts~timex2, col='red')
+# legend(max(timespan)-5, min(gts, na.rm=TRUE)+10, legend=c("GOES", "NLDAS"), pch=c("o", "---"), col=c("red", "black"), bty="n")
 
 
 #get rasters into same temporal dimensions
@@ -27,47 +29,49 @@ legend(205, 308, legend=c("GOES", "NLDAS"), pch=c("o", "---"), col=c("red", "bla
 both<-which(timex%in%timex2) #timex: nldas tme; timex2: goes time; "which nldas times are found in goes times"
 nldasdat2<-nldasdat[[both]]
 
-timex3<-as.numeric(format(time(nldasdat2), "%j"))+(as.numeric(format(time(nldasdat2), "%H"))/24)
+timex3<-as.numeric(format(time(nldasdat2), "%j"))+(as.numeric(format(time(nldasdat2), "%H"))/24) #convert to decimal DOY
 both2<-which(timex2%in%timex3) #which goestime is in the trimmed nldas time
 goesdat2<-goesdat[[both2]]
 
-#should both be true; can't just use time because GOES is timestamped ~1min after each hour
+#Check: should evaluate true (rounded time because GOES is timestamped ~1min after each hour)
 identical(date(time(goesdat2)), date(time(nldasdat2))) & identical(hour(time(goesdat2)), hour(time(nldasdat2)))
 goesdat<-goesdat2 #hacky way to not have to change names later. 
 
 
-##QC steps
+##QC and simple interpolation steps. This makes a lot of plots and console output you may or may not want
 
 for (i in 1:dim(nldasdat2)[3]){
   
   g<-goesdat[[i]]
   n<-nldasdat2[[i]]
   
+  #coverage: proportion goes pixels with data
   cov<-length(which(!is.na(as.array(g))))/length(as.array(g))
   
   
-  if(cov>0.1){
+  if(cov>0.1){ #only attempt for scenes with coverage >10%
   
   if(i!=1&i!=dim(nldasdat2)[3]){ #if not first or last
   
-    #temporal filler
+    #temporal interpolation: interpolate across one hour gaps
+    
+    #get previous, next, and to-be filled scenes
     prev<-goesdat[[i-1]]
     nxt<-goesdat[[i+1]]
     fill<-goesdat[[i]]
     gap<-which(is.na(values(fill)))
       
+    #if there are some data in both the previous and next scene, and the to-be-filled scene has some but not all pixels...
     if(!all(is.na(values(prev)))&!all(is.na(values(nxt)))&!all(is.na(values(fill)))&length(gap)!=0){
         
-        
-      fill[gap]<-(prev[gap]+nxt[gap])/2 #mean of prev and next timestep
+  
+      fill[gap]<-(prev[gap]+nxt[gap])/2 #mean of prev and next timestep anywhere to-be-filled has missing data
       
+      #see how it's going
       par(mfrow=c(1,2))
+      plot(goesdat[[i]], main=paste(time(g))); plot(fill, main=paste("timeinterp",time(goesdat)[i]))
       
-      
-      plot(goesdat[[i]]); plot(fill, main=paste("tempinterp",time(goesdat)[i]))
-        
       values(goesdat[[i]])<-values(fill)
-      
       g<-goesdat[[i]]
         
       }else{print(paste("skipping temporal interp for", time(goesdat)[i]))}
@@ -79,31 +83,22 @@ for (i in 1:dim(nldasdat2)[3]){
   
   
   #Spatial interpolation
-  #fill very small gaps spatially
-  
+
+  #get the coverage post temporal interpolation
   cov2<-length(which(!is.na(as.array(g))))/length(as.array(g))
   
-  if(cov2>0.9 & cov2<1){
+  if(cov2>0.9 & cov2<1){ #if we're missing 10% of the data or less (don't want to be filling big holes this way)...
     
     par(mfrow=c(1,2))
     plot(g, main=paste(time(g))); #plot(n)
     
-    plot(focal(g, na.policy="only", fun="mean"), main=paste("tempinterp", time(goesdat)[i]))
-    
+    #moving window smoother applied only to NA values
+    plot(focal(g, na.policy="only", fun="mean"), main=paste("spatinterp", time(goesdat)[i]))
     values(goesdat[[i]])<-values(focal(g, na.policy="only", fun="mean"))
     
     g<-goesdat[[i]]
     
   }else{print(paste("skipping spatial interp for", time(goesdat)[i]))}
-
-  # reg<-lm(c(as.array(g))~c(as.array(n)))
-  # 
-  # plot(c(as.array(g))~c(as.array(n)), ylab="goes", xlab="nldas")
-  # abline(coef(reg))
-  # 
-  # print(paste("r2:",round(summary(reg)$r.squared,2), "p:",round(summary(reg)$coef[2,4],4)))
-  # 
-  # median(values(g)); max(values(g)); min(values(g))
   
   }else{
     
@@ -120,10 +115,10 @@ for (i in 1:dim(nldasdat2)[3]){
 
 ##Build regressions#####
 
-allslopes<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions goes, 24 hours
-allints<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions goes, 24 hours
-alldebias<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions goes, 24 hours
-allslopes.noint<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions goes, 24 hours
+allslopes<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions as goes, 24 hours
+allints<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions as goes, 24 hours
+alldebias<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions as goes, 24 hours
+allslopes.noint<-array(data=NA, dim=c(dim(goesdat)[1:2], 24)) #same spatial dimensions as goes, 24 hours
 
 #Loop over hours
 for (h in 1:24){
@@ -158,8 +153,6 @@ goes<-as.array(goeshr); nldas<-as.array(nldashr)
 slopes<-(matrix(nrow=dim(goes)[1], ncol=dim(goes)[2])); slopes.noint<-(matrix(nrow=dim(goes)[1], ncol=dim(goes)[2]))
 ints<-(matrix(nrow=dim(goes)[1], ncol=dim(goes)[2]))
 debias<-(matrix(nrow=dim(goes)[1], ncol=dim(goes)[2]))
-
-
 
 
 par(mfrow=c(2,2))
