@@ -1,0 +1,17 @@
+Value,Cloud Mask Flag,Final Cloud Plus Region-growing,"Final Cloud, either one of bits 2, 3 ,or 4 set",band 4 Brightness Threshold Test,Band 4-5 Thermal Difference test,Land/Water Mask
+0,not determined,no,no,no,no,land
+1,determined,no,no,no,no,land
+2,not determined,yes,no,no,no,land
+3,determined,yes,no,no,no,land
+14,not determined,yes,yes,yes,no,land
+15,determined,yes,yes,yes,no,land
+23,determined,yes,yes,no,yes,land
+31,determined,yes,yes,yes,yes,land
+32,not determined,no,no,no,no,water
+33,determined,no,no,no,no,water
+34,not determined,yes,no,no,no,water
+35,determined,yes,no,no,no,water
+46,not determined,yes,yes,yes,no,water
+47,determined,yes,yes,yes,no,water
+55,determined,yes,yes,no,yes,water
+63,determined,yes,yes,yes,yes,water
